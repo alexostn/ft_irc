@@ -1,6 +1,6 @@
 *This project was created as part of the 42 curriculum by
 [@sarherna](https://github.com/SaraitHernandez),
-[@akarprzy](https://github.com/akarprzy),
+[@artkacp](https://github.com/artkacp),
 [@oostapen](https://github.com/alexostn).
 
 This is a clean study copy — original repo: [SaraitHernandez/irc_server](https://github.com/SaraitHernandez/irc_server)*
