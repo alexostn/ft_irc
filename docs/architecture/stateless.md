@@ -364,7 +364,7 @@ Server restarts
 
 | Data | Status | Example |
 |------|--------|---------|
-| User nickname | Lost on disconnect | alice's "alice" nickname 😄 |
+| User nickname | Lost on disconnect | alice's "alice" nickname   |
 | User profile | Lost on disconnect | alice1 / Alice Smith / user@192.168.1.100 |
 | Password records | Lost on restart | Server accepts same password, but users forgotten |
 | Channel membership | Lost on disconnect | alice's membership in #tech, #gaming |
