@@ -271,6 +271,7 @@ Here, we show how send queue + EAGAIN handling proves the fix works:
   - `man 7 errno` — Error classification system
 
 - **LinkedIn Discussion** — [EAGAIN issue](https://www.linkedin.com/posts/oleost_ecole42-42warsaw-cpp-ugcPost-7447466033948377088-2FPV) — Peer debate on eval sheet interpretation; discussion proved errno for error classification is not only allowed but *required*.
+- **LinkedIn Manual video** — [EAGAIN issue FLOODBOT](https://www.linkedin.com/feed/update/urn:li:activity:7452598819722174464/)
 
 ---
 
