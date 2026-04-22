@@ -5,8 +5,11 @@
 **Context:** Technical discussion aftermath — resolving eval sheet misinterpretation  
 **Scope:** errno handling in `send()`, TCP buffer exhaustion, FLOODBOT validation  
 **Related:** `src/Server.cpp` — `sendToClient()`, `flushClientSendQueue()`
-**Video and LinkedIN discussion 2 links** at the end of that file**
-**LinkedIn Manual video** — [EAGAIN issue FLOODBOT](https://www.linkedin.com/feed/update/urn:li:activity:7452598819722174464/)
+
+---
+
+> Video and LinkedIn discussion links at the end of this file.  
+> **LinkedIn Manual:** [EAGAIN issue — FLOODBOT](https://www.linkedin.com/feed/update/urn:li:activity:7452598819722174464/)
 ---
 
 ## 1. The Problem — Silent Data Loss in `sendToClient()`
