@@ -3,7 +3,8 @@
 **Version:** 1.0  
 **Date:** April 22, 2026  
 **Context:** Technical discussion aftermath — resolving eval sheet misinterpretation  
-**Scope:** errno handling in `send()`, TCP buffer exhaustion, FLOODBOT validation
+**Scope:** errno handling in `send()`, TCP buffer exhaustion, FLOODBOT validation  
+**Related:** `src/Server.cpp` — `sendToClient()`, `flushClientSendQueue()`
 
 ---
 
@@ -35,7 +36,7 @@ POSIX requires two-step error handling for `send()`:
 
 **Step 1:** If `sent > 0` (partial write):
 ```cpp
-if (sent > 0 && sent < msg.size()) {
+if (sent > 0 && static_cast<size_t>(sent) < msg.size()) {
     // Partial write: queue the remainder
     std::string remainder = msg.substr(sent);
     clientSendQueue[clientFd].push(remainder);
@@ -61,7 +62,7 @@ if (sent < 0) {
     }
     else {
         // Unexpected error
-        logError("send() failed: " + errno);
+        logError("send() failed: " + std::string(strerror(errno)));
         disconnectClient(clientFd);
     }
 }
@@ -176,6 +177,13 @@ No busy-loop, no repeated `send()` calls without poll() in between, no data loss
 ---
 
 ## 5. FLOODBOT Proof
+
+### Eval Sheet Mandate
+
+The ft_irc evaluation explicitly requires:
+> "Stop a client (-Z) on a channel... server should not hang... all stored commands should be processed normally"
+
+This directly mandates errno-based send queue: when `send()` returns `EAGAIN`, messages must be queued and delivered on resume. Without errno classification, the server cannot distinguish EAGAIN (queue) from EPIPE (disconnect) and cannot meet this requirement.
 
 ### The Real-World Test Scenario
 
